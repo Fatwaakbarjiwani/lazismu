@@ -1,11 +1,8 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-// import data from "../data";
 import { useEffect, useState } from "react";
 import location from "../assets/location.svg";
 import { CiShare1 } from "react-icons/ci";
-// import Card from "../components/Card";
 import Footer from "../components/Footer";
-import pana from "../assets/pana.svg";
 import user from "../assets/user.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -273,7 +270,7 @@ export default function DetailCampaign() {
                     className="items-center rounded-lg bg-white drop-shadow-lg flex px-4 py-2 gap-5 w-full"
                   >
                     <div>
-                      <img src={user} className="w-12 md:w-14 lg:w-16" alt="" />
+                      <img src={user} className="w-12 md:w-14 lg:w-16" alt="" /> 
                     </div>
                     <div className="w-full">
                       <div className="flex justify-between w-full text-base md:text-lg xl:text-xl">

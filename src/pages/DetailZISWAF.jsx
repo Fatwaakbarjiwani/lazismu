@@ -1,4 +1,4 @@
-import flower from "../assets/Zakat.jpg";
+import flower from "../assets/zakat.jpg";
 import Ziswaf from "../components/Ziswaf";
 import content1 from "../assets/conten1.svg";
 import Footer from "../components/Footer";
