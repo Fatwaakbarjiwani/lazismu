@@ -42,12 +42,6 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "vite": "^4.4.5"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
   "proxy": "http://103.23.103.43:8080"
 
 }
