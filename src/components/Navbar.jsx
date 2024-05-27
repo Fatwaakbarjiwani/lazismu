@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineDollarCircle } from "react-icons/ai";
-import profile from "../assets/profile.svg";
+import profile from "../assets/Profile.svg";
 import search from "../assets/search.svg";
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
