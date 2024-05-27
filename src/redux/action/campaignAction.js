@@ -6,6 +6,7 @@ import {
   setCategoryCampaign,
   setDataHome,
   setDetailCampaign,
+  setDistribution,
   setGetCampaignSearch,
   setGetCategoryCampaign,
   setPage,
@@ -27,7 +28,7 @@ export const getAllCampaign = (pageNumber) => async (dispatch) => {
   // console.log(pageNumber);
   try {
     const response = await axios.get(
-      `${VITE_API_URL}/campaign?page=${pageNumber}`
+      `${VITE_API_URL}/campaign/active-and-approved-campaign?page=${pageNumber}`
     );
     const data = response.data;
     dispatch(setCampaign(data.content));
@@ -102,6 +103,18 @@ export const getCampaignHistory = (campaignCode) => async (dispatch) => {
     );
     const data = response.data;
     dispatch(setCampaignHistory(data.content));
+    dispatch(setPage(data.totalPages));
+  } catch (error) {
+    console.error("Error fetching campaign data:", error);
+  }
+};
+export const getCampaignDistribution = (campaignCode) => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `${VITE_API_URL}/campaign/${campaignCode}/distribution`
+    );
+    const data = response.data;
+    dispatch(setDistribution(data.content));
     dispatch(setPage(data.totalPages));
   } catch (error) {
     console.error("Error fetching campaign data:", error);

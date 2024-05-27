@@ -100,7 +100,7 @@ export default function MetodePembayaran() {
                 Pesan Anda
               </label>
               <textarea
-                className="w-full border border-gray-300 rounded-lg p-2 text-lg outline-orange-200 "
+                className="w-full border border-gray-300 rounded-lg p-2 text-lg outline-orange-200"
                 placeholder="Pesan Anda..."
                 value={desk}
                 onChange={(e) => setDesk(e.target.value)}

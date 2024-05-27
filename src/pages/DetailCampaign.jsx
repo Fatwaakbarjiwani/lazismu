@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getAllCampaign,
   getAllCategory,
+  getCampaignDistribution,
   getCampaignHistory,
   getDetailCampaign,
 } from "../redux/action/campaignAction";
@@ -19,7 +20,7 @@ import CardCarousel from "../components/CardCarousel";
 import Card from "../components/Card";
 import Pilar from "../components/Pilar";
 import PageNumber from "../components/PageNumber";
-import distribusi from "../data/distribusi";
+import { setPageNumber } from "../redux/reducers/campaignReducer";
 
 export default function DetailCampaign() {
   const { id } = useParams();
@@ -32,6 +33,7 @@ export default function DetailCampaign() {
   const { categoryCampaign } = useSelector((state) => state.campaign);
   const { campaignHistory } = useSelector((state) => state.campaign);
   const { pageNumber } = useSelector((state) => state.campaign);
+  const { distribution } = useSelector((state) => state.campaign);
 
   const handleShareLink = () => {
     if (navigator.share) {
@@ -61,6 +63,7 @@ export default function DetailCampaign() {
       dispatch(getAllCampaign(0));
       dispatch(getAllCategory());
       dispatch(getCampaignHistory(id, pageNumber - 1));
+      dispatch(getCampaignDistribution(id, pageNumber - 1));
     }
   }, [id, dispatch]);
   return (
@@ -168,7 +171,10 @@ export default function DetailCampaign() {
             Detail
           </button>
           <button
-            onClick={() => setButton("Update")}
+            onClick={() => {
+              setButton("Update");
+              dispatch(setPageNumber(1));
+            }}
             className={`${
               button == "Update"
                 ? " underline underline-offset-[2vh] sm:underline-offset-[3vh] text-orange-500"
@@ -178,7 +184,10 @@ export default function DetailCampaign() {
             Distribution
           </button>
           <button
-            onClick={() => setButton("Donatur")}
+            onClick={() => {
+              setButton("Donatur");
+              dispatch(setPageNumber(1));
+            }}
             className={`${
               button == "Donatur"
                 ? " underline underline-offset-[2vh] sm:underline-offset-[3vh] text-orange-500"
@@ -228,9 +237,9 @@ export default function DetailCampaign() {
         {button == "Update" && (
           <div className="flex flex-col items-center gap-4 mt-10 mx-4">
             {/* <img src={pana} className="md:w-auto w-60" alt="" /> */}
-            {distribusi.map((item) => (
+            {distribution.map((item) => (
               <div
-                className="flex justify-between max-w-2xl gap-5 bg-white shadow-lg rounded border-2 border-gray-200 p-2"
+                className="flex justify-between w-full max-w-2xl gap-5 bg-white shadow-lg rounded border-2 border-gray-200 p-2"
                 key={item.distributionId}
               >
                 <img src={item.image} className="w-[100%]" alt="" />

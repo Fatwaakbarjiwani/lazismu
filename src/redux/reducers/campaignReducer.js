@@ -13,6 +13,7 @@ const initialState = {
   pageNumber: 1,
   campaignHistory: [],
   dataHome: [],
+  distribution: [],
 };
 const authSlice = createSlice({
   name: "campaign",
@@ -57,6 +58,9 @@ const authSlice = createSlice({
     setDataHome: (state, action) => {
       state.dataHome = action.payload;
     },
+    setDistribution: (state, action) => {
+      state.distribution = action.payload;
+    },
   },
 });
 
@@ -74,6 +78,7 @@ export const {
   setPageNumber,
   setCampaignHistory,
   setDataHome,
+  setDistribution,
 } = authSlice.actions;
 
 export default authSlice.reducer;
