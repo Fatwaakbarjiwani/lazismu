@@ -1,9 +1,3 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "index.html" },
-    {
-      "source": "/api/",
-      "destination": "http://103.23.103.43:8080/api/"
-    }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "index.html" }]
 }
