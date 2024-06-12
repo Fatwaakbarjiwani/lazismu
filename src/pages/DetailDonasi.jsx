@@ -31,8 +31,8 @@ export default function DetailDonasi() {
     dispatch(getAllCategory());
   }, [dispatch, id, pageNumber]);
   const handleCategoryChange = (selectedCategory) => {
-    navigate(`/detailDonasi/${selectedCategory}`);
-    dispatch(setPageNumber(1))
+    navigate(`/lazismu/detailDonasi/${selectedCategory}`);
+    dispatch(setPageNumber(1));
   };
 
   return (
@@ -69,7 +69,7 @@ export default function DetailDonasi() {
                 className="text-[10px] sm:text-base"
                 value={item.categoryName}
               >
-                {item.categoryName}
+                {item.categoryName.replace(/_/g, " ")}
               </option>
             ))}
           </select>

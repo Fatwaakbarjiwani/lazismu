@@ -20,7 +20,7 @@ export default function CardCarousel({ item, height, margin }) {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
   const handleDetail = (item) => {
-    navigate(`/detailCampaign/${item}`);
+    navigate(`/lazismu/detailCampaign/${item}`);
     dispatch(setPageNumber(1));
   };
   return (
@@ -37,7 +37,7 @@ export default function CardCarousel({ item, height, margin }) {
           <div className="mt-1 text-[7px] px-1 flex gap-1 items-center">
             <div>{item?.creator?.username}</div>
             <div className="bg-transparent ring-primary ring-1 rounded-full text-primary px-1 text-[6px] ">
-              {category.categoryName}
+              {category?.categoryName}
             </div>
           </div>
           <div className="text-[10px] px-1 font-semibold line-clamp-2">

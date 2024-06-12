@@ -29,7 +29,7 @@ export default function Ziswaf() {
   const handleButton = (value) => {
     setButton(value);
     setClick(false);
-     dispatch(setKategori(null));
+    dispatch(setKategori(null));
   };
   const handleNominalChange = (e) => {
     let inputValue = e.target.value.replace(/[^\d]/g, ""); // Menghapus karakter non-angka
@@ -60,7 +60,7 @@ export default function Ziswaf() {
     } else if (nominal == "") {
       toast.error(`Masukkan nominal ${button}`);
     } else {
-      navigate(`/metodePembayaran/${button}`);
+      navigate(`/lazismu/metodePembayaran/${button}`);
     }
   };
   const handleClick = () => {
@@ -123,7 +123,7 @@ export default function Ziswaf() {
                   className="text-[10px] sm:text-base"
                   value={item.categoryName}
                 >
-                  {item.categoryName}
+                  {item.categoryName.replace(/_/g, " ")}
                 </option>
               ))}
             </select>

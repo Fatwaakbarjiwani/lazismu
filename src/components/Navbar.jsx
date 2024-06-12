@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineDollarCircle } from "react-icons/ai";
-import profile from "../assets/Profile.svg";
+import profile from "../assets/profile.svg";
 import search from "../assets/search.svg";
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
@@ -22,6 +22,7 @@ import {
   setSearchCampaign,
 } from "../redux/reducers/campaignReducer";
 import { getMe } from "../redux/action/auth.Action";
+import DropdownMenu from "./DropdownMenu";
 
 export default function Navbar({ url }) {
   const dispatch = useDispatch();
@@ -37,9 +38,9 @@ export default function Navbar({ url }) {
     e.preventDefault();
     const searchQuery = searchCampaign.trim();
     if (searchQuery === "") {
-      navigate("/");
+      navigate("/lazismu");
     } else {
-      const searchUrl = `/pencarian/${searchQuery}`;
+      const searchUrl = `/lazismu/pencarian/${searchQuery}`;
       dispatch(setPageNumber(1));
       navigate(searchUrl);
     }
@@ -52,7 +53,7 @@ export default function Navbar({ url }) {
       {/* dekstop */}
       <div className="hidden md:block bg-white drop-shadow-lg fixed w-full text-sm md:text-lg lg:text-xl z-40 top-0">
         <div className="mx-2 lg:mx-8 xl:mx-16 p-2 xl:p-3 flex justify-between items-center">
-          <Link to={"/"}>
+          <Link to={"/lazismu/"}>
             <button className="text-start text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-green-600">
               <img src="https://lazismu.org/images/logo.svg" alt="" />
             </button>
@@ -73,15 +74,15 @@ export default function Navbar({ url }) {
               <img src={search} className="w-5" alt="" />
             </form>
           </div>
-          <div className="justify-between flex gap-2 md:gap-2 lg:gap-3 xl:gap-5 text-xs md:text-sm lg:text-base xl:text-xl font-Inter">
+          <div className="justify-between flex gap-2 md:gap-2 lg:gap-3 xl:gap-5 text-xs md:text-sm lg:text-lg font-Inter">
             <button
               className={`text-gray-500 hover:text-orange-400 hover:underline hover:underline-offset-[2vh] ${
-                url === "detailZISWAF"
+                url === "detailZISKA"
                   ? "text-orange-500 underline underline-offset-[2vh]"
                   : "text-black"
               }`}
             >
-              <Link to={"/detailZiswaf/detailZISWAF"}>Ziswaf</Link>
+              <Link to={"/lazismu/detailZiska/detailZISKA"}>Ziska</Link>
             </button>
             <button
               className={`text-gray-500 hover:text-orange-400 hover:underline hover:underline-offset-[2vh] ${
@@ -90,7 +91,7 @@ export default function Navbar({ url }) {
                   : "text-black"
               }`}
             >
-              <Link to={"/detailDonasi/detailDonasi"}>Campaign</Link>
+              <Link to={"/lazismu/detailDonasi/detailDonasi"}>Campaign</Link>
             </button>
             <button
               className={`text-gray-500 hover:text-orange-400 hover:underline hover:underline-offset-[2vh] ${
@@ -99,11 +100,9 @@ export default function Navbar({ url }) {
                   : "text-black"
               }`}
             >
-              <Link to={"/berita/berita"}>Berita</Link>
+              <Link to={"/lazismu/berita/berita"}>Berita</Link>
             </button>
-            <button className="text-gray-500 hover:text-orange-400 hover:underline hover:underline-offset-[2vh]">
-              Layanan
-            </button>
+            <DropdownMenu/>
           </div>
           <div className="hover:scale-105 block lg:hidden" onClick={tombol}>
             <img src={menu} alt="" />
@@ -112,7 +111,10 @@ export default function Navbar({ url }) {
 
           {user?.username ? (
             <div className="lg:flex gap-3 hidden">
-              <Link to={`/profile`} className="flex md:gap-2 hover:scale-105">
+              <Link
+                to={`/lazismu/profile`}
+                className="flex md:gap-2 hover:scale-105"
+              >
                 <img src={profile} className="w-5" alt="" />
                 <button className="font-Inter text-black md:text-base lg:text-lg xl:text-base font-bold">
                   {user.username}
@@ -167,7 +169,7 @@ export default function Navbar({ url }) {
         )}
         {buttonMenu == true && (
           <div className="hover:scale-105 mx-4" onClick={tombol}>
-            <IoCloseSharp className="w-6 h-6"/>
+            <IoCloseSharp className="w-6 h-6" />
           </div>
         )}
         {buttonMenu == true && <ButtonMenu user={user} profile={profile} />}
@@ -178,7 +180,7 @@ export default function Navbar({ url }) {
           <button className="text-start text-base font-bold text-green-600">
             <Link
               className="flex flex-col justify-center items-center"
-              to={"/"}
+              to={"/lazismu/"}
             >
               <img src={beranda} alt="" />
               <p className="text-WHITE01 ">Beranda</p>
@@ -188,7 +190,7 @@ export default function Navbar({ url }) {
           <button className="text-start text-base font-bold text-green-600">
             <Link
               className="flex flex-col justify-center items-center"
-              to={"/detailDonasi/detailDonasi"}
+              to={"/lazismu/detailDonasi/detailDonasi"}
             >
               <img src={Campaign} alt="" />
               <p className="text-WHITE01 ">Campaign</p>
@@ -198,17 +200,17 @@ export default function Navbar({ url }) {
           <button className="text-start text-base font-bold text-green-600">
             <Link
               className="flex flex-col justify-center items-center"
-              to={"/detailZiswaf/detailZISWAF"}
+              to={"/lazismu/detailZiska/detailZISKA"}
             >
               <AiOutlineDollarCircle color="orange" className="h-8 w-8" />
-              <p className="text-WHITE01 ">Ziswaf</p>
+              <p className="text-WHITE01 ">Ziska</p>
             </Link>
           </button>
 
           <button className="text-start text-base font-bold text-green-600">
             <Link
               className="flex flex-col justify-center items-center"
-              to={"/berita/news"}
+              to={"/lazismu/berita/news"}
             >
               <FaNewspaper color="orange" className="w-9 h-8"></FaNewspaper>
               <p className="text-WHITE01 ">Berita</p>

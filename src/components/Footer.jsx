@@ -4,52 +4,69 @@ import ig from "../assets/instagram.svg";
 import li from "../assets/linkedin.svg";
 import pesan from "../assets/pesan.svg";
 import browser from "../assets/browser.svg";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <div className="border-t-4 border-gray-400/20 flex sm:flex-row flex-col gap-y-2 justify-around md:justify-between lg:p-10 p-5 xl:p-20 bg-white text-gray-600 font-Inter mt-10 mb-[8vh] md:mb-0">
       <div className="sm:w-1/6 flex flex-col gap-1 sm:gap-2 xl:gap-5">
-        <img src="https://lazismu.org/images/logo.svg" className="w-20 sm:w-26" alt="" />
+        <img
+          src="https://lazismu.org/images/logo.svg"
+          className="w-20 sm:w-26"
+          alt=""
+        />
         <p className="flex text-left xl:text-base md:text-sm sm:text-xs text-md">
-          Gedung PBNU, Lt. 2 Jl. Kramat Raya, No. 164, Jakarta Pusat (10430)
-          Telp: (021) 3102913 Hp/WA: 0813 9800 9800
+          Gedung Dakwah Muhammadiyah, Lt. 1 Jl. Wondri Baru Raya, No. 22,
+          Semarang Selatan(50242) Telp: (024) 8415722 Hp/WA: 085640873531
         </p>
         <div className="flex sm:gap-3 gap-1 md:gap-5">
-          <button className="bg-orange-400 rounded-full w-10 h-10 md:w-8 xl:w-10 xl:h-10 flex justify-center items-center hover:scale-110">
+          <Link
+            to={"https://web.facebook.com/lazismu.org?_rdc=1&_rdr"}
+            className="bg-orange-400 rounded-full p-1 flex justify-center items-center hover:scale-110"
+          >
             <img src={fb} alt="" />
-          </button>
-          <button className="bg-orange-400 rounded-full w-10 h-10 md:w-8 xl:w-10 xl:h-10 flex justify-center items-center hover:scale-110">
+          </Link>
+          <Link
+            to={"https://x.com/LAZISMU"}
+            className="bg-orange-400 rounded-full p-1 flex justify-center items-center hover:scale-110"
+          >
             <img src={twit} alt="" />
-          </button>
-          <button className="bg-orange-400 rounded-full w-10 h-10 md:w-8 xl:w-10 xl:h-10 flex justify-center items-center hover:scale-110">
+          </Link>
+          <Link
+            to={"https://www.instagram.com/lazismupusat/"}
+            className="bg-orange-400 rounded-full p-1 flex justify-center items-center hover:scale-110"
+          >
             <img src={ig} alt="" />
-          </button>
-          <button className="bg-orange-400 rounded-full w-10 h-10 md:w-8 xl:w-10 xl:h-10 flex justify-center items-center hover:scale-110">
+          </Link>
+          <Link
+            to={"https://www.linkedin.com/company/lazismu"}
+            className="bg-orange-400 rounded-full p-1 flex justify-center items-center hover:scale-110"
+          >
             <img src={li} alt="" />
-          </button>
+          </Link>
         </div>
       </div>
       <div className="w-1/6 flex flex-col md:gap-5 gap-2">
         <p className="font-bold sm:text-base  text-lg lg:text-lg">Program</p>
         <div className="sm:text-text-sm text-base lg:text-base">
           <div className="flex justify-between xl:gap-5 gap-2">
-            <p>Zakat</p>
-            <p>Campaign</p>
+            <Link to={"/lazismu/detailZiska/detailZISKA"}>Zakat</Link>
+            <Link to={"/lazismu/detailZiska/detailZISKA"}>Infaq</Link>
           </div>
           <div className="flex justify-between xl:gap-5 gap-2">
-            <p>Ziswaf</p>
-            <p>Berita</p>
+            <p>Dana Sosial Keagamaan</p>
+            <p>SCR</p>
           </div>
           <div className="flex justify-between xl:gap-5 gap-2">
-            <p>Donasi</p>
-            <p>Infak</p>
+            <Link to={"/lazismu/detailDonasi/detailDonasi"}>Donasi</Link>
+            <Link to={"/lazismu/berita/berita"}>Berita</Link>
           </div>
         </div>
       </div>
       <div className="sm:w-1/6 flex flex-col gap-2 md:gap-5 z-10">
         <p className="font-bold sm:text-base text-lg lg:text-lg">Lainnya</p>
         <div className="flex flex-col xl:gap-5 gap-1 sm:text-text-sm text-base lg:text-base">
-          <p>Zakat</p>
+          <p>Hitung Zakat</p>
           <p>Apa itu Ziswaf?</p>
           <p>Privacy Policy</p>
           <p>Syarat dan Ketentuan </p>
@@ -63,11 +80,11 @@ export default function Footer() {
         <div className="flex flex-col lg:gap-5 gap-2">
           <div className="flex gap-1 items-center lg:gap-3 sm:text-text-sm text-base lg:text-base">
             <img src={browser} className="w-6 sm:w-6" alt="" />
-            <p>https://nucare.id/</p>
+            <Link to={"https://lazismu.org/"}>https://lazismu.org/</Link>
           </div>
           <div className="flex gap-3 sm:text-text-sm text-base lg:text-base">
             <img src={pesan} className="w-6 sm:w-6" alt="" />
-            <p>@nucare.id</p>
+            <p>lazismu.smg@gmail.com</p>
           </div>
         </div>
       </div>

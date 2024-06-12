@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import location from "../assets/location.svg";
 import { CiShare1 } from "react-icons/ci";
 import Footer from "../components/Footer";
+// import pana from "../assets/pana.svg";
 import user from "../assets/user.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -37,7 +38,7 @@ export default function DetailCampaign() {
       navigator
         .share({
           title: document.title,
-          url: `http://localhost:5173/detailCampaign/duafasambas`,
+          url: `http://103.23.103.43:8080/lazismu/detailCampaign/${detailCampaign?.campaignCode}`,
         })
         .then(() => console.log("Berbagi berhasil"))
         .catch((error) => console.error("Kesalahan saat berbagi:", error));
@@ -47,7 +48,7 @@ export default function DetailCampaign() {
   };
 
   const donasi = (id) => {
-    navigate(`/pembayaran/${id}`);
+    navigate(`/lazismu/pembayaran/${id}`);
   };
   const formatNumber = (value) => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -201,23 +202,23 @@ export default function DetailCampaign() {
               <h3>{detailCampaign.description}</h3>
               <p className="font-bold">Dapat disalurkan dengan cara :</p>
               <ul>
-                <h3 className="font-semibold text-gray-900 dark:text-white">
+                <h3 className="font-semibold text-gray-900">
                   1. {`Klik tombol "Donasi Sekarang"`}
                 </h3>
-                <h3 className="font-semibold text-gray-900 dark:text-white">
+                <h3 className="font-semibold text-gray-900">
                   2. Masukkan nominal donasi
                 </h3>
-                <h3 className="font-semibold text-gray-900 dark:text-white">
+                <h3 className="font-semibold text-gray-900">
                   3. Isi data diri
                 </h3>
-                <h3 className="font-semibold text-gray-900 dark:text-white">
+                <h3 className="font-semibold text-gray-900">
                   4. Pilih metode pembayaran
                 </h3>
-                <h3 className="font-semibold text-gray-900 dark:text-white">
+                <h3 className="font-semibold text-gray-900">
                   5.{" "}
                   {` Klik "Lanjutkan Pembayaran" dan ikuti langkah selanjutnya`}
                 </h3>
-                <h3 className="font-semibold text-gray-900 dark:text-white">
+                <h3 className="font-semibold text-gray-900">
                   6. Dapatkan laporan via email
                 </h3>
               </ul>
@@ -270,7 +271,7 @@ export default function DetailCampaign() {
                     className="items-center rounded-lg bg-white drop-shadow-lg flex px-4 py-2 gap-5 w-full"
                   >
                     <div>
-                      <img src={user} className="w-12 md:w-14 lg:w-16" alt="" /> 
+                      <img src={user} className="w-12 md:w-14 lg:w-16" alt="" />
                     </div>
                     <div className="w-full">
                       <div className="flex justify-between w-full text-base md:text-lg xl:text-xl">
@@ -307,7 +308,7 @@ export default function DetailCampaign() {
         <div className="flex justify-between items-end text-xl font-Inter sm:text-2xl font-bold my-2 sm:my-3">
           Campaign Populer
           <Link
-            to={`/detailDonasi/detailCampaign`}
+            to={`/lazismu/detailDonasi/detailCampaign`}
             className="text-xs text-orange-500 sm:text-base"
           >
             Lihat semua
@@ -330,11 +331,11 @@ export default function DetailCampaign() {
           <div className="flex flex-wrap gap-x-3 gap-y-3 mt-2">
             {allCategory.map((item) => (
               <Link
-                to={`/detailDonasi/${item.categoryName}`}
+                to={`/lazismu/detailDonasi/${item.categoryName}`}
                 key={item.id}
                 className="text-xs sm:text-base ring-1 ring-orange-500 p-1 rounded-sm active:bg-orange-500 active:text-white"
               >
-                {item.categoryName}
+                {item.categoryName.replace(/_/g, " ")}
               </Link>
             ))}
           </div>

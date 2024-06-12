@@ -47,7 +47,7 @@ export default function PembayaranDonasi() {
     ) {
       toast.error("Masukkan nominal dengan benar (0 < nominal <= 10000)");
     } else {
-      navigate(`/metodePembayaran/${id}`);
+      navigate(`/lazismu/metodePembayaran/${id}`);
     }
   };
   return (
@@ -106,7 +106,7 @@ export default function PembayaranDonasi() {
           <div className="w-5/6">
             <div className="w-full ring-gray-400 ring-2 mt-3 rounded-lg flex items-center">
               <p className="text-xl rounded-l-lg p-2 ring-gray-400 ring-2">
-                Rp 
+                Rp
               </p>
               <input
                 type="text"

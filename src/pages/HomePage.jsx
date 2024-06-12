@@ -113,6 +113,19 @@ export default function HomePage() {
                 Penerima Manfaat
               </p>
             </div>
+            <div className="flex flex-col items-center justify-between h-full">
+              <img
+                src={image3}
+                className="w-16 sm:w-20 md:w-24 lg:w-28"
+                alt=""
+              />
+              <p className="text-orange-600 md:text-lg text-[10px] ms:text-sm lg:text-xl font-semibold">
+                Rp {formatNumber(summary.totalTransactionAmount || 0)}
+              </p>
+              <p className="font-bold md:text-lg sm:text-sm text-[8px] text-center lg:text-xl text-black font-Inter">
+                Penghimpunan
+              </p>
+            </div>
             <div className="flex flex-col items-center justify-between h-full ">
               <img
                 src={image2}
@@ -124,19 +137,6 @@ export default function HomePage() {
               </p>
               <p className="font-bold md:text-lg sm:text-sm text-[8px] text-center lg:text-xl text-black font-Inter">
                 Distribusi
-              </p>
-            </div>
-            <div className="flex flex-col items-center justify-between h-full">
-              <img
-                src={image3}
-                className="w-16 sm:w-20 md:w-24 lg:w-28"
-                alt=""
-              />
-              <p className="text-orange-600 md:text-lg text-[10px] ms:text-sm lg:text-xl font-semibold">
-                Rp {formatNumber(summary.totalTransactionAmount || 0)}
-              </p>
-              <p className="font-bold md:text-lg sm:text-sm text-[8px] text-center lg:text-xl text-black font-Inter">
-                Transaksi
               </p>
             </div>
             <div className="flex flex-col items-center justify-between h-full">
@@ -161,12 +161,15 @@ export default function HomePage() {
           <h1 className="sm:my-3 my- xl:my-5 sm:text-3xl text-lg md:text-4xl lg:text-5xl xl:text-6xl font-bold">
             Salurkan donasi kamu dengan mudah
           </h1>
-          <p className="md:text-base lg:text-lg sm:text-sm text-xs xl:text-xl xl:w-2/4 my-1 sm:my-3 lg:my-5 ">
-            Jadikan program dan design kamu lebih menarik dan tertata rapi
-            dengan menggunakan jasa dari Coristict.Studio
+          <p className="md:text-base lg:text-lg sm:text-sm text-xs xl:text-xl xl:w-3/4 my-1 sm:my-3 lg:my-5 ">
+            Dengan berkontribusi, Anda akan membantu menyediakan sumber daya
+            penting kepada mereka yang sangat membutuhkannya. Aksi bersama untuk
+            sesama
           </p>
           <button className="my-1 lg:my-3 bg-primary rounded-sm px-4 py-1 lg:py-2 md:text-lg text-xs sm:text-base lg:text-lg xl:text-xl text-white font-bold hover:scale-105">
-            <Link to={"/detailDonasi/detailDonasi"}>Donasi Sekarang</Link>
+            <Link to={"/lazismu/detailDonasi/detailDonasi"}>
+              Donasi Sekarang
+            </Link>
           </button>
         </div>
         <div className="w-3/6 lg:w-2/6">
@@ -175,7 +178,7 @@ export default function HomePage() {
       </div>
       {/* button */}
       <div className="flex md:mt-10 mt-5 mx-4 md:mx-10 lg:mx-20 text-2xl lg:text-4xl font-Inter font-bold">
-        Rekomendasi Kegiatan
+        Berita Terkini
       </div>
       <Carousel
         className="drop-shadow-lg md:mx-10 lg:mx-20"
@@ -198,7 +201,10 @@ export default function HomePage() {
         initialSlide={1} // Mengatur slide awal ke index kedua (indeks dimulai dari 0)
       >
         {berita.slice(0, 5).map((item) => (
-          <Link key={item.id} to={`/berita/${item.title}/${item.id}`}>
+          <Link
+            key={item.id}
+            to={`/lazismu/berita/${item.title}/${item.newsId}`}
+          >
             <div>
               <img
                 className="md:mb-10 mb-10 my-2 h-44 sm:h-72 md:h-[70vh] w-full object-content"
@@ -215,7 +221,7 @@ export default function HomePage() {
         <div className="flex justify-between items-end text-xl font-Inter sm:text-3xl font-bold my-2 sm:my-3 md:mx-10 lg:mx-20 mx-4">
           Program Aktif
           <Link
-            to={`/detailDonasi/detailDonasi`}
+            to={`/lazismu/detailDonasi/detailDonasi`}
             className="text-xs text-orange-500 sm:text-base"
           >
             Lihat semua
@@ -276,11 +282,11 @@ export default function HomePage() {
         <div className="flex flex-wrap gap-x-3 gap-y-3 mt-2">
           {allCategory.map((item) => (
             <Link
-              to={`/detailDonasi/${item.categoryName}`}
+              to={`/lazismu/detailDonasi/${item.categoryName}`}
               key={item.id}
               className="text-xs sm:text-base ring-1 ring-orange-500 p-1 rounded-sm active:bg-orange-500 active:text-white"
             >
-              {item.categoryName}
+              {item.categoryName.replace(/_/g, " ")}
             </Link>
           ))}
         </div>

@@ -16,37 +16,66 @@ import Pencarian from "./pages/Pencarian";
 import Profile from "./pages/Profile";
 import DetailBerita from "./pages/DetailBerita";
 import { ToastContainer } from "react-toastify";
+import TentangKami from "./pages/Lainnya/TentangKami";
+import VisiMisi from "./pages/Lainnya/VisiMisi";
+import KebijakanMutu from "./pages/Lainnya/KebijakanMutu";
+import KebijakanStrategis from "./pages/Lainnya/KebijakanStrategis";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-      <ToastContainer></ToastContainer>
+        <ToastContainer></ToastContainer>
         <div className="mb-8">
           <Navbar />
         </div>
         <Routes>
-          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/lazismu" element={<HomePage />}></Route>
           <Route
-            path="/detailZiswaf/:detailZISWAF"
+            path="/lazismu/detailZiska/:detailZISKA"
             element={<DetailZISWAF />}
           ></Route>
-          <Route path="/detailDonasi/:id" element={<DetailDonasi />}></Route>
-          <Route path="/berita/:news" element={<Berita />}></Route>
           <Route
-            path="/berita/:news/:newsId"
+            path="/lazismu/detailDonasi/:id"
+            element={<DetailDonasi />}
+          ></Route>
+          <Route path="/lazismu/berita/:news" element={<Berita />}></Route>
+          <Route
+            path="/lazismu/berita/:news/:newsId"
             element={<DetailBerita />}
           ></Route>
-          <Route path="/rekening/:id" element={<Rekening />}></Route>
+          <Route path="/lazismu/rekening/:id" element={<Rekening />}></Route>
           <Route
-            path="/detailCampaign/:id"
+            path="/lazismu/detailCampaign/:id"
             element={<DetailCampaign />}
           ></Route>
-          <Route path="/pembayaran/:id" element={<PembayaranDonasi />}></Route>
-          <Route path="/pencarian/:pencarian" element={<Pencarian />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
           <Route
-            path="/metodePembayaran/:id"
+            path="/lazismu/pembayaran/:id"
+            element={<PembayaranDonasi />}
+          ></Route>
+          <Route
+            path="/lazismu/tentangKami"
+            element={<TentangKami />}
+          ></Route>
+          <Route
+            path="/lazismu/visiMisi"
+            element={<VisiMisi />}
+          ></Route>
+          <Route
+            path="/lazismu/kebijakan"
+            element={<KebijakanMutu />}
+          ></Route>
+          <Route
+            path="/lazismu/strategis"
+            element={<KebijakanStrategis />}
+          ></Route>
+          <Route
+            path="/lazismu/pencarian/:pencarian"
+            element={<Pencarian />}
+          ></Route>
+          <Route path="/lazismu/profile" element={<Profile />}></Route>
+          <Route
+            path="/lazismu/metodePembayaran/:id"
             element={<MetodePembayaran />}
           ></Route>
         </Routes>

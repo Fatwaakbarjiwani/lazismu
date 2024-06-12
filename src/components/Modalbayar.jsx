@@ -19,7 +19,7 @@ export default function Modalbayar() {
   const { detailCampaign } = useSelector((state) => state.campaign);
   const formatNumber = (value) => {
     // Konversi nilai dari string ke angka, tambahkan 2500, lalu kembali konversi ke string
-    const newValue = (parseInt(value, 10) + 2500).toString();
+    const newValue = (parseInt(value, 10) + 2000).toString();
     // Format kembali nilai yang sudah ditambahkan 2500
     return newValue.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
@@ -88,7 +88,7 @@ export default function Modalbayar() {
                 </div>
                 <div className="flex justify-between">
                   <p>Admin :</p>
-                  <p className="text-gray-600">Rp.2.500</p>
+                  <p className="text-gray-600">Rp.2.000</p>
                 </div>
               </div>
             </>

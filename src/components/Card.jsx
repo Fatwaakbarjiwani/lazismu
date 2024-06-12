@@ -12,7 +12,7 @@ export default function Card({ item }) {
   const navigate = useNavigate();
   useEffect(() => {
     const cardCategory = () => {
-      setCategory(item.category);
+      setCategory(item?.category);
     };
     cardCategory();
   }, [item]);
@@ -20,7 +20,7 @@ export default function Card({ item }) {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
   const handleDetail = (item) => {
-    navigate(`/detailCampaign/${item}`);
+    navigate(`/lazismu/detailCampaign/${item}`);
     dispatch(setPageNumber(1));
   };
 
@@ -31,7 +31,7 @@ export default function Card({ item }) {
       >
         <div>
           <img
-            src={item.campaignImage}
+            src={item?.campaignImage}
             className="object-cover h-24 sm:h-36 md:h-40 lg:h-52 rounded-t-xl md:rounded-t-xl xl:rounded-t-3xl w-full"
             alt=""
             // style={{ aspectRatio: "3/2" }}
@@ -40,7 +40,7 @@ export default function Card({ item }) {
         <div className="flex flex-col gap-1 md:gap-2 p-2">
           <div>
             <p className="font-Inter font-bold md:text-base text-xs lg:text-lg line-clamp-2">
-              {item.campaignName}
+              {item?.campaignName}
             </p>
           </div>
           {/* category */}
@@ -48,14 +48,14 @@ export default function Card({ item }) {
             <div className="md:text-sm text-[6px] flex gap-1 items-center">
               <p>Kategori</p>
               <p className="bg-primary text-white px-1 sm:px-2 rounded-3xl  font-semibold">
-                {category.categoryName}
+                {category?.categoryName}
               </p>
             </div>
             {/* location */}
             <div className="flex gap-1 lg:gap-1 items-center">
               <img src={location} className="lg:w-5 md:w-5 w-3" alt="" />
               <p className="md:text-sm xl:text-base sm:text-xs text-[8px]">
-                {item.location}
+                {item?.location}
               </p>
             </div>
           </div>
@@ -65,28 +65,28 @@ export default function Card({ item }) {
             </p>
             <div className="w-full rounded-full bg-NEUTRAL04">
               <Target
-                targetAmount={item.targetAmount}
-                amountCampaign={item.currentAmount}
+                targetAmount={item?.targetAmount}
+                amountCampaign={item?.currentAmount}
               />
             </div>
           </div>
           <div className="w-full rounded-full bg-NEUTRAL04 hidden sm:block">
             <Target
-              targetAmount={item.targetAmount}
-              amountCampaign={item.currentAmount}
+              targetAmount={item?.targetAmount}
+              amountCampaign={item?.currentAmount}
             />
           </div>
           <div>
             <div className="hidden sm:flex justify-between ">
               <p className="xl:text-base md:text-sm sm:text-xs ">Terkumpul</p>
               <p className="xl:text-base md:text-sm sm:text-xs ">
-                Rp {formatNumber(item.currentAmount)}
+                Rp {formatNumber(item?.currentAmount)}
               </p>
             </div>
             <div className="hidden sm:flex justify-between ">
               <p className="xl:text-base md:text-sm sm:text-xs ">Target</p>
               <p className="xl:text-base md:text-sm sm:text-xs ">
-                Rp {formatNumber(item.targetAmount)}
+                Rp {formatNumber(item?.targetAmount)}
               </p>
             </div>
           </div>
@@ -95,11 +95,11 @@ export default function Card({ item }) {
             <div className="flex gap-1 items-center">
               <img className="lg:w-7 md:w-5 w-3" src={time} alt="" />
               <p className="lg:text-base md:text-sm sm:text-xs text-[8px]">
-                {item.endDate}
+                {item?.endDate}
               </p>
             </div>
             <button
-              onClick={() => handleDetail(item.campaignCode)}
+              onClick={() => handleDetail(item?.campaignCode)}
               className="mt-1 w-full rounded-lg lg:px-5 md:px-4 sm:px-3 px-2 xl:px-6 py-1 lg:py-2 bg-primary lg:text-base md:text-sm sm:text-xs text-[10px] text-white font-bold md:hover:scale-105 md:hover:bg-orange-600"
             >
               Ikut Donasi
@@ -107,7 +107,7 @@ export default function Card({ item }) {
           </div>
           <div className="sm:flex hidden justify-between">
             <button
-              onClick={() => handleDetail(item.campaignCode)}
+              onClick={() => handleDetail(item?.campaignCode)}
               className="rounded-xl lg:px-5 md:px-4 sm:px-3 px-2 xl:px-6 py-1 lg:py-2 bg-primary xl:text-base lg:text-sm sm:text-xs text-[10px] text-white font-bold hover:scale-105 hover:bg-orange-600"
             >
               Ikut Donasi
@@ -115,7 +115,7 @@ export default function Card({ item }) {
             <div className="flex gap-1 items-center">
               <img className="lg:w-5 md:w-5 w-3" src={time} alt="" />
               <p className="xl:text-base lg:text-sm sm:text-xs text-[8px]">
-                {item.endDate}
+                {item?.endDate}
               </p>
             </div>
           </div>

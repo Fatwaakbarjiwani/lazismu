@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function CardBerita2({ item }) {
   return (
     <div>
-      <Link to={`/berita/${item?.title}/${item?.id}`}>
+      <Link to={`/lazismu/berita/${item?.title}/${item?.id}`}>
         <div className="flex shadow shadow-lg card-wrapper h-full bg-NEUTRAL06 md:rounded-xl rounded-lg justify-between gap-1 font-NEUTRAL04 font-Inter cursor-pointer hover:scale-105 transition delay-150 duration-300 ease-in-out">
           <img
             src={item?.image}

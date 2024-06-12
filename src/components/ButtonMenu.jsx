@@ -14,7 +14,7 @@ export default function ButtonMenu({ user, profile }) {
       {user?.username ? (
         <div className="gap-1 p-1 md:gap-3 xl:gap-5">
           <Link
-            to={`/profile`}
+            to={`/lazismu/profile`}
             className="flex gap-2 items-center justify-center my-1 md:gap-4 active:scale-105 border-2 rounded border-orange-300"
           >
             <img src={profile} className="w-3" alt="" />
