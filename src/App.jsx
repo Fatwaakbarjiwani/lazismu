@@ -20,6 +20,10 @@ import TentangKami from "./pages/Lainnya/TentangKami";
 import VisiMisi from "./pages/Lainnya/VisiMisi";
 import KebijakanMutu from "./pages/Lainnya/KebijakanMutu";
 import KebijakanStrategis from "./pages/Lainnya/KebijakanStrategis";
+import ApaItuZiswaf from "./pages/Lainnya/ApaItuZiswaf";
+import SyaratDanKetentuan from "./pages/Lainnya/SyaratDanKetentuan";
+import KebijakanRefund from "./pages/Lainnya/Refund";
+import PrivacyPolicy from "./pages/Lainnya/Privasi";
 
 function App() {
   return (
@@ -64,6 +68,22 @@ function App() {
           <Route
             path="/lazismu/kebijakan"
             element={<KebijakanMutu />}
+          ></Route>
+          <Route
+            path="/lazismu/syarat"
+            element={<SyaratDanKetentuan />}
+          ></Route>
+          <Route
+            path="/lazismu/privasi"
+            element={<PrivacyPolicy/>}
+          ></Route>
+          <Route
+            path="/lazismu/refund"
+            element={<KebijakanRefund />}
+          ></Route>
+          <Route
+            path="/lazismu/apaItuZiswaf"
+            element={<ApaItuZiswaf />}
           ></Route>
           <Route
             path="/lazismu/strategis"

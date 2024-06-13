@@ -24,48 +24,48 @@ function TentangKami() {
     return processedParts;
   };
   return (
-    <div className="font-Inter">
-      <div className="flex flex-col items-center px-4 md:px-20 py-14">
-        <p className="flex justify-center gap-2 font-black text-gray-600 text-2xl items-end">
-          TENTANG
-          <p>
-            LAZIS<span className="text-primary">MU</span>
+    <div>
+      <div className="font-Inter">
+        <div className="flex flex-col items-center px-4 md:px-20 py-14">
+          <p className="flex justify-center gap-2 font-black text-gray-600 text-2xl items-end">
+            TENTANG
+            <p>
+              LAZIS<span className="text-primary">MU</span>
+            </p>
+            <img className="h-10 w-10" src={logo} alt="" />
           </p>
-          <img className="h-10 w-10" src={logo} alt="" />
-        </p>
-        <div className="text-justify text-gray-600 leading-relaxed bg-white p-6 w-full">
-          {detailContent &&
-            detailContent.split(". ").map((sentence, index) => {
-              // Highlight the text before "adalah" and numbers at the beginning
-              let updatedSentence = sentence.replace(
-                /(\d+\.)/g,
-                "<strong>$1</strong>"
-              );
-              updatedSentence = updatedSentence.replace(
-                /([^.]*)adalah/g,
-                "<strong>$1</strong> adalah"
-              );
-              return (
-                <p
-                  className="mb-4"
-                  key={index}
-                  dangerouslySetInnerHTML={{ __html: updatedSentence + "." }}
-                ></p>
-              );
-            })}
+          <div className="text-justify text-gray-600 leading-relaxed bg-white p-6 w-full">
+            {detailContent &&
+              detailContent.split(". ").map((sentence, index) => {
+                // Highlight the text before "adalah" and numbers at the beginning
+                let updatedSentence = sentence.replace(
+                  /(\d+\.)/g,
+                  "<strong>$1</strong>"
+                );
+                updatedSentence = updatedSentence.replace(
+                  /([^.]*)adalah/g,
+                  "<strong>$1</strong> adalah"
+                );
+                return (
+                  <p
+                    className="mb-4"
+                    key={index}
+                    dangerouslySetInnerHTML={{ __html: updatedSentence + "." }}
+                  ></p>
+                );
+              })}
 
-          {processContent(detailContent2).map((part, index) => (
-            <p
-              className="mb-4"
-              key={index}
-              dangerouslySetInnerHTML={{ __html: part }}
-            ></p>
-          ))}
+            {processContent(detailContent2).map((part, index) => (
+              <p
+                className="mb-4"
+                key={index}
+                dangerouslySetInnerHTML={{ __html: part }}
+              ></p>
+            ))}
+          </div>
         </div>
       </div>
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

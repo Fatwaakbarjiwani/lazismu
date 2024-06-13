@@ -66,11 +66,24 @@ export default function Footer() {
       <div className="sm:w-1/6 flex flex-col gap-2 md:gap-5 z-10">
         <p className="font-bold sm:text-base text-lg lg:text-lg">Lainnya</p>
         <div className="flex flex-col xl:gap-5 gap-1 sm:text-text-sm text-base lg:text-base">
-          <p>Hitung Zakat</p>
-          <p>Apa itu Ziswaf?</p>
-          <p>Privacy Policy</p>
-          <p>Syarat dan Ketentuan </p>
-          <p>Refund Policy</p>
+          <Link
+            to={"/lazismu/detailZiska/detailZISKA"}
+            className="hover:text-primary"
+          >
+            Hitung Zakat
+          </Link>
+          <Link to={"/lazismu/apaItuZiswaf"} className="hover:text-primary">
+            Apa itu Ziswaf?
+          </Link>
+          <Link to={"/lazismu/privasi"} className="hover:text-primary">
+            Privacy Policy
+          </Link>
+          <Link to={"/lazismu/syarat"} className="hover:text-primary">
+            Syarat dan Ketentuan{" "}
+          </Link>
+          <Link to={"/lazismu/refund"} className="hover:text-primary">
+            Refund Policy
+          </Link>
         </div>
       </div>
       <div className="sm:w-1/6 flex flex-col gap-2 md:gap-5 z-10">
