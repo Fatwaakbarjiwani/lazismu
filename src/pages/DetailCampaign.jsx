@@ -238,7 +238,7 @@ export default function DetailCampaign() {
             {distribution.map((item) => (
               <div
                 className="flex justify-between w-full max-w-2xl gap-5 bg-white shadow-lg rounded border-2 border-gray-200 p-2"
-                key={item.distributionId}
+                key={item.id}
               >
                 <img src={item.image} className="w-[100%]" alt="" />
                 <div className="w-full">
@@ -267,7 +267,7 @@ export default function DetailCampaign() {
               {campaignHistory.length >= 1 &&
                 campaignHistory.map((item) => (
                   <div
-                    key={item?.transactionDate}
+                    key={item?.id}
                     className="items-center rounded-lg bg-white drop-shadow-lg flex px-4 py-2 gap-5 w-full"
                   >
                     <div>
@@ -317,12 +317,12 @@ export default function DetailCampaign() {
         {/* card */}
         <div className="sm:hidden md:mx-10 lg:mx-20 flex flex-row justify-between grid md:grid-cols-3 grid-cols-2  md:gap-6 sm:gap-5 gap-3">
           {campaign.slice(0, 6).map((item) => (
-            <CardCarousel key={item.id} item={item} />
+            <CardCarousel key={item.campaignId} item={item} />
           ))}
         </div>
         <div className="hidden justify-between sm:grid md:grid-cols-3 grid-cols-2  mb-8 md:gap-6 sm:gap-5 gap-3">
           {campaign.slice(0, 6).map((item) => (
-            <Card key={item.id} item={item} />
+            <Card key={item.campaignId} item={item} />
           ))}
         </div>
         {/* category */}
@@ -332,7 +332,7 @@ export default function DetailCampaign() {
             {allCategory.map((item) => (
               <Link
                 to={`/lazismu/detailDonasi/${item.categoryName}`}
-                key={item.id}
+                key={item.campaignId}
                 className="text-xs sm:text-base ring-1 ring-orange-500 p-1 rounded-sm active:bg-orange-500 active:text-white"
               >
                 {item.categoryName.replace(/_/g, " ")}

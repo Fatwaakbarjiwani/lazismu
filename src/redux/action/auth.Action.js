@@ -57,7 +57,7 @@ export const login = (phoneNumber, password) => async (dispatch) => {
         dispatch(setShowLogin(false));
       }, 2000);
     }
-  } catch (error) {
+  } catch (error) {    
     toast.error("Password dan Akun salah");
   }
 };

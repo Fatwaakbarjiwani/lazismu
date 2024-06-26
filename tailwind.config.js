@@ -13,6 +13,7 @@ export default {
       },
       colors: {
         primary:" rgba(246, 143, 40)",
+        // primary:"#37b7c3",
         GREENDARK: "#436850",
         GREENDARK2: "#1E2F24",
         DARKBLUE05: "#6148FF",

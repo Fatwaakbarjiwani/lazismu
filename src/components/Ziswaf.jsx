@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 
 export default function Ziswaf() {
   const [button, setButton] = useState("zakat");
-  const [onOff, setOnOff] = useState(false);
   const [click, setClick] = useState(false);
   const [biaya, setBiaya] = useState("");
   const dispatch = useDispatch();
@@ -19,13 +18,6 @@ export default function Ziswaf() {
     dispatch(getAllCategoryZakat(button));
   }, [dispatch, button]);
 
-  const handleOn = () => {
-    if (onOff == false) {
-      setOnOff(true);
-    } else {
-      setOnOff(false);
-    }
-  };
   const handleButton = (value) => {
     setButton(value);
     setClick(false);
@@ -138,28 +130,6 @@ export default function Ziswaf() {
               : "Mari wakaf tunai bersama kami!"}
           </p>
         </div>
-        {button == "zakat" && (
-          <div className="md:flex justify-between my-4 md:my-4 items-center text-NEUTRAL04">
-            <p className="font-bold">Kekayaan 1 Tahun</p>
-            <div className="flex justify-between md:justify-none items-center gap-3">
-              <p className="font-semibold">Isi Sendiri Zakat Maal </p>
-              <button
-                onClick={() => handleOn(onOff)}
-                className={`rounded-full w-20 ring-1 ring-gray-600 p-1 ${
-                  onOff == false
-                    ? "flex justify-start"
-                    : "flex justify-end ring-2 ring-orange-500"
-                }`}
-              >
-                <div
-                  className={`rounded-full h-6 w-6 ${
-                    onOff == false ? "bg-gray-800" : "bg-orange-500"
-                  }`}
-                ></div>
-              </button>
-            </div>
-          </div>
-        )}
         <div className="w-full ring-gray-300 shadow ring-1 my-4 xl:my-10 rounded-xl flex items-center">
           <p className="md:text-xl rounded-l-xl p-3 md:p-2 ring-gray-300 ring-1">
             Rp.
@@ -171,21 +141,10 @@ export default function Ziswaf() {
             onChange={handleNominalChange}
           />
         </div>
-        {button == "zakat" && onOff == false && (
-          <div className="my-2 md:my-5">
-            <div className="my-1">
-              <p className="font-semibold">Zakat Maal Kamu</p>
-            </div>
-            <div className="flex text-xl md:text-3xl">
-              <p>RP.</p>
-              <p>{biaya}</p>
-            </div>
-          </div>
-        )}
         <div className="flex md:justify-end">
           <button
             onClick={handleBayar}
-            className="w-full md:w-auto rounded-md bg-primary text-white font-bold text-lg px-6 py-2 md:rounded-full active:scale-105 md:hover:scale-105 transition duration-150 ease-in-out items-center"
+            className="w-full md:w-auto rounded-md bg-primary text-white font-bold text-lg px-6 py-2 active:scale-105 md:hover:scale-105 transition duration-150 ease-in-out items-center"
           >
             Bayar{" "}
             {button == "zakat"

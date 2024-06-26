@@ -6,7 +6,12 @@ const key = "secretKey";
 const initialState = {
   nominal: getNominalFromLocalStorage(),
   kategori: getKategoriFromLocalStorage(),
-  methode: "",
+  methode: localStorage.getItem("methode"),
+  noVa: localStorage.getItem("noVa"),
+  type: localStorage.getItem("type"),
+  billingId: localStorage.getItem("billingId"),
+  pembayaran: [],
+  statusBilling: [],
 };
 
 function getNominalFromLocalStorage() {
@@ -26,16 +31,16 @@ function getNominalFromLocalStorage() {
   return null;
 }
 function getKategoriFromLocalStorage() {
-  const encryptedNominal = localStorage.getItem("nominal");
-  if (encryptedNominal) {
+  const encryptedKategori = localStorage.getItem("kategori");
+  if (encryptedKategori) {
     // Decrypt nilai nominal sebelum mengembalikannya
     try {
-      const bytes = CryptoJS.AES.decrypt(encryptedNominal, key);
+      const bytes = CryptoJS.AES.decrypt(encryptedKategori, key);
       const originalNominal = bytes.toString(CryptoJS.enc.Utf8);
       return originalNominal;
     } catch (error) {
       // Handle kesalahan dekripsi
-      console.error("Error decrypting nominal:", error);
+      console.error("Error decrypting kategori:", error);
       return null;
     }
   }
@@ -60,7 +65,36 @@ const authSlice = createSlice({
       state.nominal = action.payload;
     },
     setMethode: (state, action) => {
-      state.nominal = action.payload;
+      if (action.payload) {
+        localStorage.setItem("methode", action.payload);
+      } else {
+        localStorage.removeItem("methode");
+      }
+      state.methode = action.payload;
+    },
+    setNoVa: (state, action) => {
+      if (action.payload) {
+        localStorage.setItem("noVa", JSON.stringify(action.payload));
+      } else {
+        localStorage.removeItem("noVa");
+      }
+      state.noVa = action.payload;
+    },
+    setType: (state, action) => {
+      if (action.payload) {
+        localStorage.setItem("type", JSON.stringify(action.payload));
+      } else {
+        localStorage.removeItem("type");
+      }
+      state.type = action.payload;
+    },
+    setBillingId: (state, action) => {
+      if (action.payload) {
+        localStorage.setItem("billingId", JSON.stringify(action.payload));
+      } else {
+        localStorage.removeItem("billingId");
+      }
+      state.billingId = action.payload;
     },
     setKategori: (state, action) => {
       if (action.payload) {
@@ -75,9 +109,26 @@ const authSlice = createSlice({
       }
       state.kategori = action.payload;
     },
+
+
+    setPembayaran: (state, action) => {
+      state.pembayaran = action.payload;
+    },
+    setStatusBilling: (state, action) => {
+      state.statusBilling = action.payload;
+    },
   },
 });
 
-export const { setNominal, setMethode, setKategori } = authSlice.actions;
+export const {
+  setNominal,
+  setMethode,
+  setKategori,
+  setNoVa,
+  setType,
+  setPembayaran,
+  setStatusBilling,
+  setBillingId
+} = authSlice.actions;
 
 export default authSlice.reducer;

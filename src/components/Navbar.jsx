@@ -51,7 +51,7 @@ export default function Navbar({ url }) {
   return (
     <div>
       {/* dekstop */}
-      <div className="hidden md:block bg-white drop-shadow-lg fixed w-full text-sm md:text-lg lg:text-xl z-40 top-0">
+      <div className="hidden md:block bg-white shadow fixed w-full text-sm md:text-lg lg:text-xl z-40 top-0">
         <div className="mx-2 lg:mx-8 xl:mx-16 p-2 xl:p-3 flex justify-between items-center">
           <Link to={"/lazismu/"}>
             <button className="text-start text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-green-600">

@@ -24,6 +24,8 @@ import ApaItuZiswaf from "./pages/Lainnya/ApaItuZiswaf";
 import SyaratDanKetentuan from "./pages/Lainnya/SyaratDanKetentuan";
 import KebijakanRefund from "./pages/Lainnya/Refund";
 import PrivacyPolicy from "./pages/Lainnya/Privasi";
+import ChosePayment from "./pages/pilihanPembayaran/ChosePayment";
+import Payment from "./pages/pilihanPembayaran/Payment";
 
 function App() {
   return (
@@ -97,6 +99,14 @@ function App() {
           <Route
             path="/lazismu/metodePembayaran/:id"
             element={<MetodePembayaran />}
+          ></Route>
+          <Route
+            path="/lazismu/pilihPembayaran/:id"
+            element={<ChosePayment />}
+          ></Route>
+          <Route
+            path="/lazismu/modalBayar/:id"
+            element={<Payment/>}
           ></Route>
         </Routes>
         <Modal />

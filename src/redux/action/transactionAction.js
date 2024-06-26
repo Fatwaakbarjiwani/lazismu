@@ -1,48 +1,48 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+export const VITE_API_URL = import.meta.env.VITE_API_CAREUS;
+import "react-toastify/dist/ReactToastify.css";
+import {  setBillingId, setNoVa, setPembayaran,  setStatusBilling, setType } from "../reducers/pembayaranReducer";
 
-export const SERVER = import.meta.env.Server_Key;
-
-export const transaksi =
-  (id, jumlahPembayaran, jumlahDonasi, vaNumber) => async (dispatch) => {
+export const pembayaran =
+  (username, phoneNumber, message, transaksiAmount, code, kategori,navigate) =>
+  async (dispatch, getState) => {
     try {
-      const SERVER_KEY = SERVER;
-      const AUTH_STRING = btoa(`${SERVER_KEY}:`);
-
-      // Kirim data transaksi yang sesuai
+      const { token } = getState().auth;
       const response = await axios.post(
-        `https://app.sandbox.midtrans.com/snap/v1/transactions`,
+        `${VITE_API_URL}${
+          code == "infak" || code == "wakaf" || code == "zakat"
+            ? `/billing/${code}/${kategori}`
+            : `/billing/campaign/${code}`
+        }`,
         {
-          transaction_details: {
-            order_id: id, // ID pesanan
-            gross_amount: jumlahPembayaran, // Jumlah pembayaran
-          },
-          customer_details: {
-            // Detail pelanggan, jika diperlukan
-          },
-          item_details: [
-            {
-              // Detail item pembayaran, jika diperlukan
-            },
-          ],
-          payment_type: "bank_transfer", // Jenis pembayaran yang dipilih, misalnya bank_transfer
-          bank_transfer: {
-            bank: "bca", // Bank yang dipilih, misalnya BCA
-            va_number: vaNumber, // Nomor VA (Virtual Account) yang telah diterbitkan oleh Midtrans
-          },
+          username: username,
+          phoneNumber: phoneNumber,
+          amount: transaksiAmount,
+          message: message,
         },
         {
           headers: {
-            Authorization: `Basic ${AUTH_STRING}`,
-            "Content-Type": "application/json", // Pastikan jenis konten dikonfigurasi dengan benar
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-
-      // Tanggapi respons dari Midtrans di sini
-      console.log("Response from Midtrans:", response.data);
-
-      // Lakukan tindakan apa pun setelah mendapatkan respons dari Midtrans, misalnya meredirect pengguna ke halaman pembayaran
+      const { data } = response;
+      dispatch(setNoVa(data.vaNumber));
+      dispatch(setType(data.method));
+      dispatch(setBillingId(data.billingId));
+      // console.log(data.billingId);
+      dispatch(setPembayaran(data));
+      navigate(`/lazismu/modalBayar/${code}`);
     } catch (error) {
-      console.error("Error fetching campaign data:", error);
-    }
+      toast.error("gagal membuat transaksi");
+    } 
   };
+export const statusPembayaran = (id) => async (dispatch) => {
+  try {
+    const response = await axios.get(`${VITE_API_URL}/billing/success/${id}`);
+    dispatch(setStatusBilling(response.data));
+  } catch (error) {
+    console.error("Error fetching campaign data:", error);
+  }
+};

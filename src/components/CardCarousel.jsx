@@ -88,7 +88,7 @@ export default function CardCarousel({ item, height, margin }) {
   );
 }
 CardCarousel.propTypes = {
-  item: PropTypes.object.isRequired,
-  height: PropTypes.string.isRequired,
-  margin: PropTypes.string.isRequired,
+  item: PropTypes.object,
+  height: PropTypes.string,
+  margin: PropTypes.string,
 };

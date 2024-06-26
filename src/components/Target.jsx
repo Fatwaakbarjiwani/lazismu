@@ -25,6 +25,6 @@ export default function Target({ targetAmount, amountCampaign }) {
   );
 }
 Target.propTypes = {
-  targetAmount: PropTypes.number.isRequired,
-  amountCampaign: PropTypes.number.isRequired,
+  targetAmount: PropTypes.number,
+  amountCampaign: PropTypes.number,
 };

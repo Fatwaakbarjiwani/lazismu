@@ -1,6 +1,6 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-const CountdownTimer = ({ targetDate }) => {
+const CountdownTimer = ({ targetDate, timerEnded, setTimerEnded }) => {
   const calculateTimeLeft = () => {
     const difference = +new Date(targetDate) - +new Date();
     let timeLeft = {};
@@ -18,10 +18,16 @@ const CountdownTimer = ({ targetDate }) => {
   };
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  console.log(timerEnded);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
+      const newTimeLeft = calculateTimeLeft();
+      setTimeLeft(newTimeLeft);
+
+      if (Object.keys(newTimeLeft).length === 0) {
+        setTimerEnded(true);
+      }
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -42,14 +48,9 @@ const CountdownTimer = ({ targetDate }) => {
   });
 
   return (
-    <div className=" text-sm">
-      <h1>Batas Waktu Pembayaran</h1>
+    <div>
       <div className="font-bold">
-        {timerComponents.length ? (
-          timerComponents
-        ) : (
-          <span>Waktu sudah habis!</span>
-        )}
+        {timerEnded ? <span>Waktu sudah habis!</span> : timerComponents}
       </div>
     </div>
   );

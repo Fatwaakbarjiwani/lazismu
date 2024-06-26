@@ -90,7 +90,7 @@ export default function HomePage() {
             className="object-cover w-full h-44 sm:h-80 md:h-80 lg:h-96 "
           />
         </div>
-        <div className="top-0 left-0 md:mt-10 h-[36vh] sm:h-80 md:h-80 lg:h-96 bg-gradient-to-r from-transparent via-primary/50 to-primary w-[44%] md:w-[44%] xl:w-[42%] absolute"></div>
+        <div className="top-0 left-0 md:mt-10 h-[36vh] sm:h-80 md:h-80 lg:h-96 bg-gradient-to-r from-transparent via-primary/50 to-primary w-[44%] md:w-[44%] xl:w-[43%] absolute"></div>
         <div className="w-full">
           <p className="font-Madimi sm:text-3xl text-base md:text-4xl lg:text-5xl text-black/70 mt-5 sm:mt-0">
             Donasi Mudah Kini Bisa Lebih Cepat Tanpa Ada Jarak
